@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.pyplot import title
+import os
 
 dataM = pd.read_csv('/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/data/student-mat.csv', sep = ";")
 dataP  = pd.read_csv('/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/data/student-por.csv', sep = ";")
@@ -31,6 +31,31 @@ def gradient_descent(m_now, b_now, points, L):
 
     return m, b
 
+def save_plot(m, b, points, epochs, path=None):
+    if path is None:
+        outdir =  "plots"
+        os.makedirs(outdir, exist_ok=True)
+        fname = f"reg_epoch_{epochs}_m_{m:.4f}_b_{b:.4f}.png"
+        full_path = os.path.join(outdir, fname)
+    else:
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        full_path = path
+
+    plt.scatter(points.G2, points.G3, color = "black")
+    x_min = int(points["G2"].min())
+    x_max = int(points["G2"].max())
+    x_line = list(range(x_min, x_max + 1))
+    plt.plot(x_line, [m * x + b for x in x_line], color="red")
+    plt.text(
+        0.02, 0.98,
+        f"Epochs: {epochs}\nm: {m:.4f}\nb: {b:.4f}",
+        transform=plt.gca().transAxes,
+        va='top',
+        bbox=dict(facecolor='white', alpha=0.7, edgecolor='black')
+    )
+    plt.savefig(full_path)
+    plt.close()
+
 m = 0
 b = 0
 L = 0.0001
@@ -43,9 +68,7 @@ for i in range(epochs):
 
 print(m, b)
 
-plt.scatter(dataM.G2, dataM.G3, color = "black")
-x_min = int(dataM["G2"].min())
-x_max = int(dataM["G2"].max())
-x_line = list(range(x_min, x_max + 1))
-plt.plot(x_line, [m * x + b for x in x_line], color="red")
-plt.show()
+save_plot(
+    m, b, dataM, epochs,
+    path=f"/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/outputs/reg_epoch_{epochs}_m_{m:.4f}_b_{b:.4f}.png"
+)
