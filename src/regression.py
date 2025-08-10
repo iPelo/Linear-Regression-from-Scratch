@@ -5,6 +5,11 @@ import os
 dataM = pd.read_csv('/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/data/student-mat.csv', sep = ";")
 dataP  = pd.read_csv('/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/data/student-por.csv', sep = ";")
 
+shuffled_dataM = dataM.sample(frac=1, random_state=42).reset_index(drop=True)
+split_index = int(len(shuffled_dataM) * 0.8)
+train_data = shuffled_dataM.iloc[:split_index]
+test_data = shuffled_dataM.iloc[split_index:]
+
 def loss_function(m,b,points):
     total_error = 0
     for i in range(len(points)):
@@ -64,9 +69,14 @@ epochs = 1000
 for i in range(epochs):
     if i % 50 ==0:
         print(f"Epoch: {i}")
-    m, b = gradient_descent(m, b, dataM, L)
+    m, b = gradient_descent(m, b, train_data, L)
 
 print(m, b)
+
+train_loss = loss_function(m, b, train_data)
+test_loss = loss_function(m, b, test_data)
+print(f"Train Loss: {train_loss}")
+print(f"Test Loss: {test_loss}")
 
 save_plot(
     m, b, dataM, epochs,
