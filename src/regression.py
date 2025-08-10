@@ -18,6 +18,19 @@ def loss_function(m,b,points):
         total_error += ( y - ( m * x + b )) ** 2
     return total_error / float(len(points))
 
+def r2_score(m,b,points):
+    y = points["G3"].values
+    x = points["G2"].values
+    y_pred = m * x +b
+
+    ss_res = ((y - y_pred) ** 2).sum()
+    y_mean = y.mean()
+    ss_tot = ((y - y_mean) ** 2).sum()
+
+    if ss_tot == 0:
+        return float('nan')
+    return 1 - ss_res / ss_tot
+
 def gradient_descent(m_now, b_now, points, L):
     m_gradient = 0
     b_gradient = 0
@@ -64,7 +77,7 @@ def save_plot(m, b, points, epochs, path=None):
 m = 0
 b = 0
 L = 0.0001
-epochs = 1000
+epochs = 50
 
 for i in range(epochs):
     if i % 50 ==0:
@@ -75,10 +88,12 @@ print(m, b)
 
 train_loss = loss_function(m, b, train_data)
 test_loss = loss_function(m, b, test_data)
-print(f"Train Loss: {train_loss}")
-print(f"Test Loss: {test_loss}")
+print(f"Train MSE: {train_loss:.4f}")
+print(f"Test MSE: {test_loss:.4f}")
+test_r2 = r2_score(m, b, test_data)
+print(f"Test R^2: {test_r2:.4f}")
 
-save_plot(
-    m, b, dataM, epochs,
-    path=f"/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/outputs/reg_epoch_{epochs}_m_{m:.4f}_b_{b:.4f}.png"
-)
+#save_plot(
+    #m, b, dataM, epochs,
+  #  path=f"/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/outputs/reg_epoch_{epochs}_m_{m:.4f}_b_{b:.4f}.png"
+#)
