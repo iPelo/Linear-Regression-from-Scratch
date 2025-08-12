@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-08-12T17:59:45",
+  "dataset": "math_G2_to_G3",
+  "method": "gd",
+  "epochs": 1000,
+  "learning_rate": 0.0001,
+  "m": 0.9824585027531808,
+  "b": 0.04640153912826353,
+  "train_mse": 3.975938537560889,
+  "test_mse": 4.199996827340123,
+  "test_r2": 0.766766499391119,
+  "ne_m": 1.1095628102027675,
+  "ne_b": -1.489704477905022,
+  "ne_test_mse": 4.131551504968731,
+  "ne_test_r2": 0.770567393247292,
+  "pred_plot": "/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/outputs/gd_reg_e1000_m0.9825_b0.0464.png",
+  "loss_plot": "/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/outputs/gd_loss_e1000_L1e-04.png",
+  "seed": 42
+}
