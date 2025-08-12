@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-08-12T17:50:27",
+  "method": "gd",
+  "epochs": 1000,
+  "learning_rate": 0.0001,
+  "m": 0.9824585027531808,
+  "b": 0.04640153912826352,
+  "train_mse": 3.9759385375608876,
+  "test_mse": 4.199996827340123,
+  "test_r2": 0.766766499391119,
+  "ne_m": 1.1095628102027675,
+  "ne_b": -1.489704477905022,
+  "ne_test_mse": 4.13155150496873,
+  "ne_test_r2": 0.770567393247292,
+  "plot_path": "/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/outputs/reg_epoch_1000_m_0.9825_b_0.0464.png",
+  "loss_curve_path": "/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/outputs/loss_curve_e1000_L1e-04.png",
+  "dataset": "math_G2_to_G3"
+}
