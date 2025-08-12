@@ -15,6 +15,9 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Markdown-000000?logo=markdown&logoColor=white&style=for-the-badge" alt="Markdown">
   <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge" alt="Python">
+  <img src="https://img.shields.io/badge/NumPy-013243?logo=numpy&logoColor=white&style=for-the-badge" alt="NumPy">
+  <img src="https://img.shields.io/badge/Matplotlib-11557c?logo=plotly&logoColor=white&style=for-the-badge" alt="Matplotlib">
+  <a href="outputs/"><img src="https://img.shields.io/badge/JSON%20Metrics-000000?logo=json&logoColor=white&style=for-the-badge" alt="JSON Metrics"></a>
 </p>
 
 ---
@@ -31,7 +34,9 @@
 
 ## 📜 Overview
 
-**Linear-Regression-from-Scratch** is an educational developer tool demonstrating the fundamentals of **linear regression** via a hands-on **gradient descent** implementation. Train, evaluate, and visualize a regression model without high-level ML libraries to build intuition for core concepts.
+**Linear-Regression-from-Scratch** is an educational developer tool demonstrating the fundamentals of **linear regression** via a hands-on implementation now refactored into an object-oriented design. The core model is encapsulated in a `LinearRegressor` class located in `src/models.py`. Both **Gradient Descent** and the **Normal Equation** solver methods are available to fit the model.
+
+Outputs include data and regression plots, loss curves, and performance metrics saved as JSON files in the `outputs/` directory, enabling comprehensive evaluation and visualization without relying on high-level ML libraries.
 
 ### Why Linear-Regression-from-Scratch?
 - ✨ **Gradient Descent Optimization** — see how parameters learn.
@@ -39,14 +44,17 @@
 - 📈 **Metrics** — loss and R² for performance checks.
 - 📝 **Pandas Workflow** — simple data manipulation.
 - 🎯 **Extendable** — add multivariate regression, regularization later.
+- ✔️ **Normal Equation Sanity Check** — closed-form solution for comparison.
+- 📉 **Loss Curve Visualization** — track training progress over epochs.
+- 📂 **JSON Metrics Logging** — save evaluation results for further analysis.
 
 ---
 
 ## 🚀 Getting Started
 
 ### 📦 Prerequisites
-- **Python** (version per your `conda.yml`)
-- **Conda** (Miniconda/Anaconda)
+- **Python 3.10+**
+- **pip** (optional: **Conda**)
 
 ---
 
@@ -55,19 +63,39 @@
 # Clone the repository
 git clone https://github.com/iPelo/Linear-Regression-from-Scratch
 
-# Enter the project
+# Enter the project directory
 cd Linear-Regression-from-Scratch
 
-# Create the environment
-conda env create -f conda.yml
+# Install dependencies
+pip install -r requirements.txt
 
-# Activate environment
-conda activate {venv}
+# Run the main script
+python src/main.py
+```
 
+---
 
-conda activate {venv}
-python {entrypoint}    # e.g., python src/train.py
+### 🛠 Usage
 
+Edit the dataset path or parameters directly in `src/main.py` before running the script:
 
-conda activate {venv}
+```python
+# Example snippet from src/main.py
+dataset_path = "data/your_dataset.csv"
+```
+
+Then execute:
+
+```bash
+python src/main.py
+```
+
+This will train the model, generate plots, loss curves, and save metrics to the `outputs/` folder.
+
+---
+
+### 🧪 Testing
+
+```bash
 pytest            # or: pytest -q
+```
