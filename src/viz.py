@@ -5,7 +5,7 @@ import numpy as np
 def save_pred_plot(x, y, m, b, title, path_png):
     os.makedirs(os.path.dirname(path_png), exist_ok=True)
     plt.figure()
-    plt.scatter(x, y, color="black")
+    plt.scatter(x, y)  # test points
     x_min, x_max = int(np.min(x)), int(np.max(x))
     x_line = np.arange(x_min, x_max + 1)
     plt.plot(x_line, m * x_line + b)

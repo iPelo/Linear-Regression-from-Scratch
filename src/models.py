@@ -25,15 +25,12 @@ class LinearRegressor:
         self.loss_curve_.clear()
 
         for i in range(self.epochs):
-            # gradients
             y_hat = m * x_train + b
             m_grad = -(2.0/n) * np.sum(x_train * (y_train - y_hat))
             b_grad = -(2.0/n) * np.sum(y_train - y_hat)
-            # update
             m -= self.lr * m_grad
             b -= self.lr * b_grad
 
-            # track loss
             loss = self._loss(m, b, x_train, y_train)
             self.loss_curve_.append(loss)
             if verbose_every and (i % verbose_every == 0):
@@ -43,7 +40,6 @@ class LinearRegressor:
         return self
 
     def fit_normal(self, x_train, y_train):
-        # normal equation with bias
         X = np.column_stack([x_train, np.ones_like(x_train)])
         theta = np.linalg.pinv(X.T @ X) @ (X.T @ y_train)
         self.m_, self.b_ = float(theta[0]), float(theta[1])
@@ -53,7 +49,6 @@ class LinearRegressor:
     def predict(self, x):
         return self.m_ * x + self.b_
 
-    # Convenience wrappers so you can compute on any split easily
     def train_mse(self, x_train, y_train):
         return self._loss(self.m_, self.b_, x_train, y_train)
 

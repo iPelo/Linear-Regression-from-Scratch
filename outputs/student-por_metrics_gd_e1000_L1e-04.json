@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-08-14T20:39:33",
+  "dataset": "student-por",
+  "method": "gd",
+  "epochs": 1000,
+  "learning_rate": 0.0001,
+  "m": 1.0213853114251845,
+  "b": 0.08097364712146095,
+  "train_mse": 1.8225961571558356,
+  "test_mse": 0.8542146437160812,
+  "test_r2": 0.8701030496076719,
+  "ne_m": 1.0342329136825281,
+  "ne_b": -0.07717755868659992,
+  "ne_test_mse": 0.8717832242258018,
+  "ne_test_r2": 0.8674314669466595,
+  "pred_plot": "/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/outputs/student-por_gd_reg_e1000_m1.0214_b0.0810.png",
+  "loss_plot": "/Users/r.ilay/Desktop/AI Portfolio/Student_Regression/outputs/student-por_gd_loss_e1000_L1e-04.png",
+  "seed": 42
+}
